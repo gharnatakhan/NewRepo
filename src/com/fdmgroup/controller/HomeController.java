@@ -5,11 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdmgroup.dao.UserDao;
+import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.SalesAdministrator;
 import com.fdmgroup.model.SystemAdministrator;
@@ -20,7 +22,7 @@ import com.fdmgroup.model.User;
 public class HomeController {
 
 	@RequestMapping(value = "/")
-	public String showIndex(HttpSession session, @RequestParam String email, @RequestParam String password) {
+	public String showIndex(HttpSession session, @RequestParam String email, @RequestParam String password, Model model) {
 		System.out.println("-- HomeController --");
 		User user = (User) session.getAttribute("user");
 		// Is there a logged in User
@@ -57,6 +59,14 @@ public class HomeController {
 
 	}
 
+	@RequestMapping(value = "/jobPostings")
+	public String showJobPostings(Model model) {
+		JobPostingDao jobPostingdao = new JobPostingDao();
+		List<JobPostingDao> listOfJobPostings = jobPostingdao.findAll();
+		model.addAttribute("listOfJobPostings",listOfJobPostings);
+		return "jobPosting";
+	}
+	
 	private static String redirectUser(User user) {
 			if (user.getClass() == Trainee.class) {
 				// Forward to job postings
