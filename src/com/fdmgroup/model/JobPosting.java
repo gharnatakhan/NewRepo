@@ -1,16 +1,18 @@
 package com.fdmgroup.model;
 
-import java.time.LocalDate;
-import java.util.Date;
+
+import java.time.LocalDateTime;
+
 import java.util.List;
 
 public class JobPosting {
 	
 	private int jobPostingId;
+	private int numberOfPositions;
 	private Client client;
 	private String jobTitle;
 	private String location;
-	private LocalDate applicationDeadline;
+	private LocalDateTime applicationDeadline;
 	private String jobDescription;
 	private List<Comment> comments;
 	private List<Application> applications;
@@ -19,6 +21,12 @@ public class JobPosting {
 	}
 	public void setJobPostingId(int jobPostingId) {
 		this.jobPostingId = jobPostingId;
+	}
+	public int getNumberOfPositions() {
+		return numberOfPositions;
+	}
+	public void setNumberOfPositions(int numberOfPositions) {
+		this.numberOfPositions = numberOfPositions;
 	}
 	public Client getClient() {
 		return client;
@@ -38,10 +46,10 @@ public class JobPosting {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public LocalDate getApplicationDeadline() {
+	public LocalDateTime getApplicationDeadline() {
 		return applicationDeadline;
 	}
-	public void setApplicationDeadline(LocalDate applicationDeadline) {
+	public void setApplicationDeadline(LocalDateTime applicationDeadline) {
 		this.applicationDeadline = applicationDeadline;
 	}
 	public String getJobDescription() {
@@ -62,10 +70,18 @@ public class JobPosting {
 	public void setApplications(List<Application> applications) {
 		this.applications = applications;
 	}
-	public JobPosting(int jobPostingId, Client client, String jobTitle, String location, LocalDate applicationDeadline,
-			String jobDescription, List<Comment> comments, List<Application> applications) {
-		super();
+	@Override
+	public String toString() {
+		return "JobPosting [jobPostingId=" + jobPostingId + ", numberOfPositions=" + numberOfPositions + ", client="
+				+ client + ", jobTitle=" + jobTitle + ", location=" + location + ", applicationDeadline="
+				+ applicationDeadline + ", jobDescription=" + jobDescription + ", comments=" + comments
+				+ ", applications=" + applications + "]";
+	}
+	public JobPosting(int jobPostingId, int numberOfPositions, Client client, String jobTitle, String location,
+			LocalDateTime applicationDeadline, String jobDescription, List<Comment> comments,
+			List<Application> applications) {
 		this.jobPostingId = jobPostingId;
+		this.numberOfPositions = numberOfPositions;
 		this.client = client;
 		this.jobTitle = jobTitle;
 		this.location = location;
@@ -78,12 +94,7 @@ public class JobPosting {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "JobPosting [jobPostingId=" + jobPostingId + ", jobTitle=" + jobTitle + ", location=" + location
-				+ ", applicationDeadline=" + applicationDeadline + ", jobDescription=" + jobDescription + ", comments="
-				+ comments + ", applications=" + applications + "]";
-	}
+	
 	
 
 }
