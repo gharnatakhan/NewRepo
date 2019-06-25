@@ -1,7 +1,6 @@
 
 package com.fdmgroup.controller;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,74 +19,62 @@ import com.fdmgroup.model.User;
 @Controller
 public class HomeController {
 
-	@RequestMapping(value="/")
+	@RequestMapping(value = "/")
 	public String showIndex(HttpSession session, @RequestParam String email, @RequestParam String password) {
 		System.out.println("-- HomeController --");
 		User user = (User) session.getAttribute("user");
-		//Is there a logged in User
+		// Is there a logged in User
 		if (user != null) {
 			return redirectUser(user);
-		}
-		else if (email != null) {
-			//Does a user with matching credentials exist?
-			UserDao dao = new UserDao();
-			User foundUser = UserDao.findByEmail(email);
-			if (foundUser.getPassword().equals(password) ) {
-				//User logs in and is added to session
+		} else if (email != null) {
+			// Does a user with matching credentials exist?
+			UserDao userDao = new UserDao();
+			User foundUser = userDao.findByEmail(email);
+			if (foundUser != null && foundUser.getPassword().equals(password)) {
+				// User logs in and is added to session
 				session.setAttribute("user", foundUser);
 				return redirectUser(foundUser);
 			}
-				
-			
 			else {
-				//User does not login
+				// User does not login
 				return "index";
 			}
-			
+
 		}
 
-
-			
-		
 		return "index";
-		
+
 	}
 
+	@RequestMapping(value = "/logout")
+	public String logout(HttpServletRequest req, ModelMap model) {
+		System.out.println("logout()");
+		HttpSession session = req.getSession();
+		session.invalidate();
+		model.addAttribute("logoutMsg", "successfully logged-out");
 
-    @RequestMapping(value="/logout")
-    public String logout(HttpServletRequest req, ModelMap model) {
-           System.out.println("logout()");
-         HttpSession session = req.getSession();
-         session.invalidate();
-         model.addAttribute("logoutMsg", "successfully logged-out");
-         
-         return "index";
+		return "index";
 
-    }
+	}
 
 	private static String redirectUser(User user) {
-		if (user != null) {
 			if (user.getClass() == Trainee.class) {
-				//Forward to job postings
+				// Forward to job postings
 				System.out.println("Trainee signed in");
 				return "redirect:/jobPostings";
-			}
-			else if (user.getClass() == AccountManager.class) {
-				//Forward to AM dashboard
+			} else if (user.getClass() == AccountManager.class) {
+				// Forward to AM dashboard
 				System.out.println("AM signed in");
 				return "redirect:/accountManagerDashboard";
-			}
-			else if (user.getClass() == SystemAdministrator.class) {
-				//Forward to SystemAdmin dashboard
+			} else if (user.getClass() == SystemAdministrator.class) {
+				// Forward to SystemAdmin dashboard
 				System.out.println("SysAdmin signed in");
 				return "redirect:/sysAdminDashboard";
-			}
-			else if (user.getClass() == SalesAdministrator.class) {
-				//Forward to SalesAdmin dashboard
+			} else if (user.getClass() == SalesAdministrator.class) {
+				// Forward to SalesAdmin dashboard
 				System.out.println("SalesAdmin signed in");
 				return "redirect:/salesAdminDashboard";
-			}
+			}		
+			return "index";
 	}
-
-
 }
