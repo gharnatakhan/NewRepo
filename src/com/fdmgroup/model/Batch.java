@@ -1,5 +1,6 @@
 package com.fdmgroup.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Batch {
@@ -17,7 +18,7 @@ public class Batch {
 	
 	private int batchSize;
 	
-	/*private List<Trainee> trainee;*/
+	private List<Trainee> trainee = new ArrayList<>();
 	
 	public int getBatchId() {
 		return batchId;
@@ -43,13 +44,13 @@ public class Batch {
 		this.batchSize = batchSize;
 	}
 	
-	/*public List<Trainee> getTrainee() {
+	public List<Trainee> getTrainee() {
 		return trainee;
 	}
 	
 	public void setTrainee(List<Trainee> trainee) {
 		this.trainee = trainee;
-	}*/
+	}
 	
 	public Batch() {
 		super();
@@ -61,7 +62,7 @@ public class Batch {
 		this.batchId = batchId;
 		this.location = location;
 		this.batchSize = batchSize;
-		/*this.trainee = trainee;*/
+		this.trainee = trainee;
 	}
 	
 	@Override
