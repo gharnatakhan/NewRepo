@@ -19,7 +19,7 @@ import com.fdmgroup.model.User;
 
 /**
  *  
- * @author jay.patel1
+ * @author jay.patel1 matthew.mccarthy
  * Controller for showing landing page based on user type
  * and dealing with login and logout functionality
  */
