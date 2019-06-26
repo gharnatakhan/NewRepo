@@ -19,6 +19,14 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="J:/MavenRepository/com/oracle/ojdbc6/11.2.0.3/ojdbc6-11.2.0.3.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/MavenRepository/com/oracle/ojdbc6/11.2.0.3/ojdbc6-11.2.0.3.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+>>>>>>> Model
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

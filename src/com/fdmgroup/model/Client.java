@@ -1,17 +1,26 @@
 package com.fdmgroup.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Client {
+	@Id
 	private int clientId;
-	
+
 	private String name;
-	
+
 	private String location;
 
-	public Client(int clientId, String name, String location) {
-		this.clientId = clientId;
-		this.name = name;
-		this.location = location;
-	}
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userId")
+	private AccountManager accountManager;
 
 	public Client() {
 		super();
@@ -42,9 +51,18 @@ public class Client {
 		this.location = location;
 	}
 
+	public AccountManager getAccountManager() {
+		return accountManager;
+	}
+
+	public void setAccountManager(AccountManager accountManager) {
+		this.accountManager = accountManager;
+	}
+
 	@Override
 	public String toString() {
-		return "Client [clientId=" + clientId + ", name=" + name + ", location=" + location + "]";
+		return "Client [clientId=" + clientId + ", name=" + name + ", location=" + location + ", accountManager="
+				+ accountManager + "]";
 	}
-	
+
 }
