@@ -26,13 +26,13 @@ public class JobPosting {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int jobPostingId;
 	private int numberOfPositions;
-	private Client client;
+	/*private Client client;*/
 	private String jobTitle;
 	private String location;
 	private LocalDateTime applicationDeadline;
 	private String jobDescription;
-	private List<Comment> comments;
-	private List<Application> applications;
+/*	private List<Comment> comments;*/
+	/*private List<Application> applications;*/
 	public int getJobPostingId() {
 		return jobPostingId;
 	}
@@ -45,12 +45,12 @@ public class JobPosting {
 	public void setNumberOfPositions(int numberOfPositions) {
 		this.numberOfPositions = numberOfPositions;
 	}
-	public Client getClient() {
+	/*public Client getClient() {
 		return client;
 	}
 	public void setClient(Client client) {
 		this.client = client;
-	}
+	}*/
 	public String getJobTitle() {
 		return jobTitle;
 	}
@@ -75,37 +75,37 @@ public class JobPosting {
 	public void setJobDescription(String jobDescription) {
 		this.jobDescription = jobDescription;
 	}
-	public List<Comment> getComments() {
+	/*public List<Comment> getComments() {
 		return comments;
 	}
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
-	}
-	public List<Application> getApplications() {
+	}*/
+	/*public List<Application> getApplications() {
 		return applications;
 	}
 	public void setApplications(List<Application> applications) {
 		this.applications = applications;
-	}
-	@Override
+	}*/
+/*	@Override
 	public String toString() {
 		return "JobPosting [jobPostingId=" + jobPostingId + ", numberOfPositions=" + numberOfPositions + ", client="
 				+ client + ", jobTitle=" + jobTitle + ", location=" + location + ", applicationDeadline="
 				+ applicationDeadline + ", jobDescription=" + jobDescription + ", comments=" + comments
 				+ ", applications=" + applications + "]";
-	}
+	}*/
 	public JobPosting(int jobPostingId, int numberOfPositions, Client client, String jobTitle, String location,
 			LocalDateTime applicationDeadline, String jobDescription, List<Comment> comments,
 			List<Application> applications) {
 		this.jobPostingId = jobPostingId;
 		this.numberOfPositions = numberOfPositions;
-		this.client = client;
+//		this.client = client;
 		this.jobTitle = jobTitle;
 		this.location = location;
 		this.applicationDeadline = applicationDeadline;
 		this.jobDescription = jobDescription;
-		this.comments = comments;
-		this.applications = applications;
+//		this.comments = comments;
+//		this.applications = applications;
 	}
 	public JobPosting() {
 		super();
