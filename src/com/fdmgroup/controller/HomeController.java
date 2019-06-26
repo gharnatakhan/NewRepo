@@ -27,13 +27,20 @@ import com.fdmgroup.model.User;
 public class HomeController {
 
 	@RequestMapping(value = "/")
-	public String showIndex(HttpSession session, @RequestParam String email, @RequestParam String password, Model model) {
+	public String showIndex(HttpSession session, Model model) {
+		System.out.println("-- MainPage --");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/login")
+	public String showLanding(HttpSession session, @RequestParam String email, @RequestParam String password, Model model) {
 		System.out.println("-- HomeController --");
 		User user = (User) session.getAttribute("user");
 		// Is there a logged in User
 		if (user != null) {
 			return redirectUser(user);
-		} else if (email != null) {
+		} 
+		else if (email != null) {
 			// Does a user with matching credentials exist?
 			UserDao userDao = new UserDao();
 			User foundUser = userDao.findByEmail(email);
