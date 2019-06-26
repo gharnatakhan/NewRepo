@@ -1,8 +1,6 @@
 
 package com.fdmgroup.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdmgroup.dao.UserDao;
-import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.model.AccountManager;
-import com.fdmgroup.model.Client;
-import com.fdmgroup.model.JobPosting;
-
 import com.fdmgroup.model.SalesAdministrator;
 import com.fdmgroup.model.SystemAdministrator;
 import com.fdmgroup.model.Trainee;
 import com.fdmgroup.model.User;
 
+/**
+ *  
+ * @author jay.patel1 matthew.mccarthy
+ * Controller for showing landing page based on user type
+ * and dealing with login and logout functionality
+ */
 @Controller
 public class HomeController {
 
@@ -63,23 +63,6 @@ public class HomeController {
 		return "index";
 
 	}
-
-	@RequestMapping(value = "/jobPostings")
-	public String showJobPostings(HttpSession session, Model model) {
-		JobPostingDao jobPostingdao = new JobPostingDao();
-		User user = (User) session.getAttribute("user");
-		if(user != null ) {
-			if(user.getClass() == Trainee.class) {
-				//finds all job postings for trainee
-				List<JobPosting> listOfJobPostings = jobPostingdao.findAll();
-				model.addAttribute("listOfJobPostings",listOfJobPostings);
-				return "jobPosting";
-			}
-		}
-		
-		//placeholder right now
-		return "jobPosting";
-	}
 	
 	private static String redirectUser(User user) {
 			if (user.getClass() == Trainee.class) {
@@ -101,14 +84,4 @@ public class HomeController {
 			}		
 			return "index";
 	}
-	
-	@RequestMapping("/clients")
-	public String showAllClients(HttpSession session, Client client) {
-		User user = (User) session.getAttribute("client");
-		if (user!= empty) {
-			// get all the clients and store in the list of string
-			List<String> listOfClients = clientDao.findAll();
-			}
-	}
-	
 }
