@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fdmgroup.dao.UserDao;
 import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.model.AccountManager;
+import com.fdmgroup.model.Client;
 import com.fdmgroup.model.SalesAdministrator;
 import com.fdmgroup.model.SystemAdministrator;
 import com.fdmgroup.model.Trainee;
@@ -95,5 +96,10 @@ public class HomeController {
 				return "redirect:/salesAdminDashboard";
 			}		
 			return "index";
+	}
+	
+	@RequestMapping("/clients")
+	public String showAllClients(HttpSession session, Client client) {
+		clien
 	}
 }
