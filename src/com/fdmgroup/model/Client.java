@@ -8,8 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+//@NamedQueries({ 
+	
+	@NamedQuery(name = "client.findAll", query = "SELECT c FROM Client c")
+//,}
+	// @NamedQuery(name = "user.findAllActive", query = "SELECT u FROM User u WHERE
+	// u.active = true"),
+//	@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u where u.email = :uemail"),
+	// @NamedQuery(name = "user.findAllAdmins", query = "SELECT u FROM AdminUser u
+	// where TYPE(u) = AdminUser"),
+//	@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type") })
 public class Client {
 	@Id
 	private int clientId;
