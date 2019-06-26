@@ -2,16 +2,28 @@ package com.fdmgroup.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Application {
-	
+
+	@Id
 	private int applicationId;
-	
-	private int userId;
-	
-	private int jobPostingId;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userId")
+	private Trainee trainee;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "jobPostingId")
+	private JobPosting jobPosting;
 
 	private LocalDateTime applicationTime;
-	
+
 	private String elevatorPitch;
 
 	public Application() {
@@ -19,11 +31,11 @@ public class Application {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Application(int applicationId, int userId, int jobPostingId, LocalDateTime applicationTime,
+	public Application(int applicationId, Trainee trainee, JobPosting jobPosting, LocalDateTime applicationTime,
 			String elevatorPitch) {
 		this.applicationId = applicationId;
-		this.userId = userId;
-		this.jobPostingId = jobPostingId;
+		this.trainee = trainee;
+		this.jobPosting = jobPosting;
 		this.applicationTime = applicationTime;
 		this.elevatorPitch = elevatorPitch;
 	}
@@ -36,20 +48,20 @@ public class Application {
 		this.applicationId = applicationId;
 	}
 
-	public int getUserId() {
-		return userId;
+	public Trainee getTrainee() {
+		return trainee;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setTrainee(Trainee trainee) {
+		this.trainee = trainee;
 	}
 
-	public int getJobPostingId() {
-		return jobPostingId;
+	public JobPosting getJobPosting() {
+		return jobPosting;
 	}
 
-	public void setJobPostingId(int jobPostingId) {
-		this.jobPostingId = jobPostingId;
+	public void setJobPosting(JobPosting jobPosting) {
+		this.jobPosting = jobPosting;
 	}
 
 	public LocalDateTime getApplicationTime() {
@@ -70,8 +82,8 @@ public class Application {
 
 	@Override
 	public String toString() {
-		return "Application [applicationId=" + applicationId + ", userId=" + userId + ", jobPostingId=" + jobPostingId
+		return "Application [applicationId=" + applicationId + ", trainee=" + trainee + ", jobPosting=" + jobPosting
 				+ ", applicationTime=" + applicationTime + ", elevatorPitch=" + elevatorPitch + "]";
 	}
-	
+
 }

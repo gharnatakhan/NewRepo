@@ -3,38 +3,29 @@ package com.fdmgroup.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Client {
+	@Id
 	private int clientId;
-	
+
 	private String name;
-	
+
 	private String location;
-	
-	private List<AccountManager> accountManagers = new ArrayList<>();
 
-	public List<AccountManager> getAccountManagers() {
-		return accountManagers;
-	}
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userId")
+	private AccountManager accountManager;
 
-
-	public void setAccountManagers(List<AccountManager> accountManagers) {
-		this.accountManagers = accountManagers;
-	}
-
-
-	public Client(int clientId, String name, String location, List<AccountManager> accountManagers) {
-		this.clientId = clientId;
-		this.name = name;
-		this.location = location;
-		this.accountManagers = accountManagers;
-	}
-
-	
 	public Client() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public int getClientId() {
 		return clientId;
@@ -60,11 +51,18 @@ public class Client {
 		this.location = location;
 	}
 
+	public AccountManager getAccountManager() {
+		return accountManager;
+	}
+
+	public void setAccountManager(AccountManager accountManager) {
+		this.accountManager = accountManager;
+	}
 
 	@Override
 	public String toString() {
-		return "Client [clientId=" + clientId + ", name=" + name + ", location=" + location + ", accountManagers="
-				+ accountManagers + "]";
+		return "Client [clientId=" + clientId + ", name=" + name + ", location=" + location + ", accountManager="
+				+ accountManager + "]";
 	}
-	
+
 }

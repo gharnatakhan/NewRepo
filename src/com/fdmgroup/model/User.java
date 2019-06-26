@@ -15,48 +15,62 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CAULDRON_USER")
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="user_type",discriminatorType=DiscriminatorType.STRING)
-@NamedQueries({
-	@NamedQuery(name = "user.findAll", query = "SELECT u FROM User u"),
-//	@NamedQuery(name = "user.findAllActive", query = "SELECT u FROM User u WHERE u.active = true"),
-	@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u where u.email = :uemail"),
-//	@NamedQuery(name = "user.findAllAdmins", query = "SELECT u FROM AdminUser u where TYPE(u) = AdminUser"),
-	@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type")
-})
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
+@NamedQueries({ @NamedQuery(name = "user.findAll", query = "SELECT u FROM User u"),
+		// @NamedQuery(name = "user.findAllActive", query = "SELECT u FROM User u WHERE
+		// u.active = true"),
+		@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u where u.email = :uemail"),
+		// @NamedQuery(name = "user.findAllAdmins", query = "SELECT u FROM AdminUser u
+		// where TYPE(u) = AdminUser"),
+		@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type") })
 public class User {
-	
+
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private String email;
-	
+
 	private String role;
-	
+
 	private String photoPath;
-	
+
 	private String password;
 
+	private int phoneNumber;
 
-	public User(String firstName, String lastName, String email, String role, String photoPath,
-			String password) {
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(String firstName, String lastName, String email, String role, String photoPath, String password,
+			int phoneNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.role = role;
 		this.photoPath = photoPath;
 		this.password = password;
+		this.phoneNumber = phoneNumber;
 	}
 
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
+	public User(int userId, String firstName, String lastName, String email, String role, String photoPath,
+			String password, int phoneNumber) {
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.role = role;
+		this.photoPath = photoPath;
+		this.password = password;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public int getUserId() {
@@ -115,10 +129,19 @@ public class User {
 		this.password = password;
 	}
 
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", role=" + role + ", photoPath=" + photoPath + ", password=" + password + "]";
+				+ ", role=" + role + ", photoPath=" + photoPath + ", password=" + password + ", phoneNumber="
+				+ phoneNumber + "]";
 	}
 
 }

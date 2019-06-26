@@ -4,12 +4,21 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Trainee")
 public class Trainee extends User {
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userId")
 	private Batch batch;
 
 	private LocalDate startDate;
@@ -20,72 +29,60 @@ public class Trainee extends User {
 		PREGATE, INTRAINING, SIGNEDOFF, BEACHED, OTHER
 	}
 
-	private List<String> traineePreferences = new ArrayList<>();
+	private String university;
 
-	public List<String> getTraineePreferences() {
-		return traineePreferences;
-	}
-
-	public void setTraineePreferences(List<String> traineePreferences) {
-		this.traineePreferences = traineePreferences;
-	}
-
-	private List<String> skills = new ArrayList<>();
-
-	private String degree;
-
-	private String degreeName;
+	private String major;
 
 	private String degreeType;
 
 	private String location;
 
-	private List<String> geoflex = new ArrayList<>();
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Trainee_Preference")
+	private List<Preference> traineePreferences = new ArrayList<>();
 
-	private int phoneNumber;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Trainee_Skill")
+	private List<Skill> skills = new ArrayList<>();
 
-	public Trainee(String firstName, String lastName, String email, String role, String photoPath, String password,
-			Batch batch, LocalDate startDate, LocalDate endDate, List<String> skills, String degree, String degreeName,
-			String degreeType, String location, List<String> geoflex, int phoneNumber) {
-		super(firstName, lastName, email, role, photoPath, password);
-		this.batch = batch;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.skills = skills;
-		this.degree = degree;
-		this.degreeName = degreeName;
-		this.degreeType = degreeType;
-		this.location = location;
-		this.geoflex = geoflex;
-		this.phoneNumber = phoneNumber;
-	}
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="Trainee_GeoFlex")
+	private List<GeoFlex> geoflex = new ArrayList<>();
 
-	public Trainee(String firstName, String lastName, String email, String role, String photoPath, String password,
-			Batch batch, LocalDate startDate, LocalDate endDate, List<String> traineePreferences, List<String> skills,
-			String degree, String degreeName, String degreeType, String location, List<String> geoflex,
-			int phoneNumber) {
-		super(firstName, lastName, email, role, photoPath, password);
-		this.batch = batch;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.traineePreferences = traineePreferences;
-		this.skills = skills;
-		this.degree = degree;
-		this.degreeName = degreeName;
-		this.degreeType = degreeType;
-		this.location = location;
-		this.geoflex = geoflex;
-		this.phoneNumber = phoneNumber;
-	}
+	@OneToMany(mappedBy = "trainee")
+	private List<Application> applicationHistory = new ArrayList<>();
 
 	public Trainee() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Trainee(String firstName, String lastName, String email, String role, String photoPath, String password) {
-		super(firstName, lastName, email, role, photoPath, password);
+	public Trainee(int userId, String firstName, String lastName, String email, String role, String photoPath,
+			String password, int phoneNumber) {
+		super(userId, firstName, lastName, email, role, photoPath, password, phoneNumber);
 		// TODO Auto-generated constructor stub
+	}
+
+	public Trainee(String firstName, String lastName, String email, String role, String photoPath, String password,
+			int phoneNumber) {
+		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Trainee(Batch batch, LocalDate startDate, LocalDate endDate, String university, String major,
+			String degreeType, String location, List<Preference> traineePreferences, List<Skill> skills,
+			List<GeoFlex> geoflex, List<Application> applicationHistory) {
+		this.batch = batch;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.university = university;
+		this.major = major;
+		this.degreeType = degreeType;
+		this.location = location;
+		this.traineePreferences = traineePreferences;
+		this.skills = skills;
+		this.geoflex = geoflex;
+		this.applicationHistory = applicationHistory;
 	}
 
 	public Batch getBatch() {
@@ -112,28 +109,20 @@ public class Trainee extends User {
 		this.endDate = endDate;
 	}
 
-	public List<String> getSkills() {
-		return skills;
+	public String getUniversity() {
+		return university;
 	}
 
-	public void setSkills(List<String> skills) {
-		this.skills = skills;
+	public void setUniversity(String university) {
+		this.university = university;
 	}
 
-	public String getDegree() {
-		return degree;
+	public String getMajor() {
+		return major;
 	}
 
-	public void setDegree(String degree) {
-		this.degree = degree;
-	}
-
-	public String getDegreeName() {
-		return degreeName;
-	}
-
-	public void setDegreeName(String degreeName) {
-		this.degreeName = degreeName;
+	public void setMajor(String major) {
+		this.major = major;
 	}
 
 	public String getDegreeType() {
@@ -152,27 +141,45 @@ public class Trainee extends User {
 		this.location = location;
 	}
 
-	public List<String> getGeoflex() {
+	public List<Preference> getTraineePreferences() {
+		return traineePreferences;
+	}
+
+	public void setTraineePreferences(List<Preference> traineePreferences) {
+		this.traineePreferences = traineePreferences;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+
+	public List<GeoFlex> getGeoflex() {
 		return geoflex;
 	}
 
-	public void setGeoflex(List<String> geoflex) {
+	public void setGeoflex(List<GeoFlex> geoflex) {
 		this.geoflex = geoflex;
 	}
 
-	public int getPhoneNumber() {
-		return phoneNumber;
+	public List<Application> getApplicationHistory() {
+		return applicationHistory;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setApplicationHistory(List<Application> applicationHistory) {
+		this.applicationHistory = applicationHistory;
 	}
 
 	@Override
 	public String toString() {
-		return "Trainee [batch=" + batch + ", startDate=" + startDate + ", endDate=" + endDate + ", skills=" + skills
-				+ ", degree=" + degree + ", degreeName=" + degreeName + ", degreeType=" + degreeType + ", location="
-				+ location + ", geoflex=" + geoflex + ", phoneNumber=" + phoneNumber + "]";
+		return "Trainee [batch=" + batch + ", startDate=" + startDate + ", endDate=" + endDate + ", university="
+				+ university + ", major=" + major + ", degreeType=" + degreeType + ", location=" + location
+				+ ", traineePreferences=" + traineePreferences + ", skills=" + skills + ", geoflex=" + geoflex
+				+ ", applicationHistory=" + applicationHistory + "]";
 	}
 
+	
 }
