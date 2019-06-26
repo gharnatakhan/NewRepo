@@ -8,9 +8,15 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({
+@NamedQuery(name = "accountManager.findAll", query = "SELECT a FROM AccountManager a"),
+@NamedQuery(name = "accountManager.findBy", query = "SELECT u FROM User u where u.email = :uemail")
+})
 @DiscriminatorValue("AccountManager")
 public class AccountManager extends User {
 

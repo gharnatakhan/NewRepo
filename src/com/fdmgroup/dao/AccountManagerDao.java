@@ -1,20 +1,49 @@
 package com.fdmgroup.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.Client;
+import com.fdmgroup.model.User;
 
-
-public class ClientDao {
+public class AccountManagerDao {
 	
+	UserDao udao = new UserDao();
+	 
 	private DbConnection connection;
 
-	public ClientDao() {
+	public AccountManagerDao() {
 		super();
 		connection = DbConnection.getInstance();
+	}
+	
+	public AccountManager findbyAccountManagerId(int id) {
+		EntityManager em = connection.getEntityManager();
+		AccountManager accountManager = em.find(AccountManager.class, id);
+		em.close();
+		return accountManager;
+	}
+	
+	
+	public List<AccountManager> findbyAccountManagerLastName(String name) {
+		EntityManager em = connection.getEntityManager();
+		AccountManager accountManager = new AccountManager();
+		List<User> allUsers = udao.findByType(accountManager.getClass());
+		List<AccountManager> accountManagers = new ArrayList<>();
+ 		
+		for (User user : allUsers) {
+			if (user.getLastName().equals(name))
+			{
+				accountManagers.add((AccountManager) user);
+			}
+		}
+		
+		em.close();
+		return accountManagers;
 	}
 	
 /*	public User create(User user){
@@ -59,13 +88,16 @@ public class ClientDao {
 		return user;
 	}
 	*/
-	public List<Client> findAll() {
+	
+	public List<AccountManager> findAll() {
 		EntityManager em = connection.getEntityManager();
-		TypedQuery<Client> query = em.createNamedQuery("client.findAll", Client.class);
-		List<Client> clients = query.getResultList();
+		TypedQuery<AccountManager> query = em.createNamedQuery("accountManager.findAll", AccountManager.class);
+		List<AccountManager> accountManagers = query.getResultList();
 		em.close();
-		return clients;
+		return accountManagers;
 	}
+	
+	
 	
 /*	public List<User> findAllActive() {
 		EntityManager em = connection.getEntityManager();
@@ -105,4 +137,6 @@ public class ClientDao {
 		return users;
 	}
 */
+
+
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fdmgroup.dao.AccountManagerDao;
 import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.Application;
@@ -67,7 +68,7 @@ public class TraineeController {
 			return "redirect:/";
 		}
 		// finds account managers by name
-		List<AccountManager> listofAccountManagers = amDao.findbyAccountManagerName(name);
+		List<AccountManager> listofAccountManagers = amDao.findbyAccountManagerLastName(name);
 		model.addAttribute("listofAccountManagers", listofAccountManagers);
 		return "accountManagers";
 	}
