@@ -104,6 +104,11 @@ public class HomeController {
 	
 	@RequestMapping("/clients")
 	public String showAllClients(HttpSession session, Client client) {
-		clien
+		User user = (User) session.getAttribute("client");
+		if (user!= empty) {
+			// get all the clients and store in the list of string
+			List<String> listOfClients = clientDao.findAll();
+			}
 	}
+	
 }
