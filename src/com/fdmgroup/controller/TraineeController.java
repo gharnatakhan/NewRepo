@@ -53,7 +53,7 @@ public class TraineeController {
 	}
 	
 	@RequestMapping(value = "/accountManagers/{name}")
-	public String showAccountManagerById(@PathVariable String name, HttpSession session, Model model) {
+	public String showAccountManagerByName(@PathVariable String name, HttpSession session, Model model) {
 		User user = (User)session.getAttribute("user");
 		AccountManagerDao amDao = new AccountManagerDao();
 		
@@ -63,8 +63,8 @@ public class TraineeController {
 			return "redirect:/";
 		}
 		// finds account managers by id
-		AccountManager accountManager = amDao.findbyAccountManagerName(name);
-		model.addAttribute("accountManager", accountManager);
+		List<AccountManager> listofAccountManagers = amDao.findbyAccountManagerName(name);
+		model.addAttribute("listofAccountManagers", listofAccountManagers);
 		return "accountManagers";
 	}
 }
