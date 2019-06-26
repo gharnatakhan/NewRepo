@@ -27,15 +27,16 @@ import com.fdmgroup.model.User;
 public class HomeController {
 
 	@RequestMapping(value = "/")
-	public String showIndex(HttpSession session, Model model) {
+	public String showIndex() {
 		System.out.println("-- MainPage --");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/login")
 	public String showLanding(HttpSession session, @RequestParam String email, @RequestParam String password, Model model) {
-		System.out.println("-- HomeController --");
+		System.out.println("-- HomeController --");		
 		User user = (User) session.getAttribute("user");
+		model.addAttribute("user", user);
 		// Is there a logged in User
 		if (user != null) {
 			return redirectUser(user);
