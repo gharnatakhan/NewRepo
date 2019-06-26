@@ -67,17 +67,10 @@ public class HomeController {
 	@RequestMapping(value = "/jobPostings")
 	public String showJobPostings(HttpSession session, Model model) {
 		JobPostingDao jobPostingdao = new JobPostingDao();
-		User user = (User) session.getAttribute("user");
-		if(user != null ) {
-			if(user.getClass() == Trainee.class) {
-				//finds all job postings for trainee
-				List<JobPosting> listOfJobPostings = jobPostingdao.findAll();
-				model.addAttribute("listOfJobPostings",listOfJobPostings);
-				return "jobPosting";
-			}
-		}
-		
-		//placeholder right now
+
+		//finds all job postings for any user type
+		List<JobPosting> listOfJobPostings = jobPostingdao.findAll();
+		model.addAttribute("listOfJobPostings",listOfJobPostings);
 		return "jobPosting";
 	}
 	
