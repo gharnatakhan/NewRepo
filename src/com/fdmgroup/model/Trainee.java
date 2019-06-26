@@ -3,8 +3,13 @@ package com.fdmgroup.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Trainee")
 public class Trainee extends User{
-	private Batch batch;
+	/*private Batch batch;*/
 	
 	private LocalDate startDate;
 	
@@ -19,7 +24,7 @@ public class Trainee extends User{
 		OTHER
 	}
 	
-	private List<String> skills;
+/*	private List<String> skills;*/
 	
 	private String degree;
 	
@@ -29,11 +34,11 @@ public class Trainee extends User{
 	
 	private String location;
 	
-	private List<String> geoflex;
+	/*private List<String> geoflex;*/
 	
 	private int phoneNumber;
 
-	public Trainee(int userId, String firstName, String lastName, String email, String role, String photoPath,
+/*	public Trainee(int userId, String firstName, String lastName, String email, String role, String photoPath,
 			String password, Batch batch, LocalDate startDate, LocalDate endDate, List<String> skills, String degree,
 			String degreeName, String degreeType, String location, List<String> geoflex, int phoneNumber) {
 		super(userId, firstName, lastName, email, role, photoPath, password);
@@ -48,7 +53,7 @@ public class Trainee extends User{
 		this.geoflex = geoflex;
 		this.phoneNumber = phoneNumber;
 	}
-	
+	*/
 	
 
 	public Trainee() {
@@ -58,22 +63,22 @@ public class Trainee extends User{
 
 
 
-	public Trainee(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public Trainee(String firstName, String lastName, String email, String role, String photoPath,
 			String password) {
-		super(userId, firstName, lastName, email, role, photoPath, password);
+		super(firstName, lastName, email, role, photoPath, password);
 		// TODO Auto-generated constructor stub
 	}
 
 
 
-	public Batch getBatch() {
+/*	public Batch getBatch() {
 		return batch;
 	}
 
 	public void setBatch(Batch batch) {
 		this.batch = batch;
 	}
-
+*/
 	public LocalDate getStartDate() {
 		return startDate;
 	}
@@ -90,13 +95,13 @@ public class Trainee extends User{
 		this.endDate = endDate;
 	}
 
-	public List<String> getSkills() {
+/*	public List<String> getSkills() {
 		return skills;
 	}
 
 	public void setSkills(List<String> skills) {
 		this.skills = skills;
-	}
+	}*/
 
 	public String getDegree() {
 		return degree;
@@ -129,14 +134,14 @@ public class Trainee extends User{
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
+/*
 	public List<String> getGeoflex() {
 		return geoflex;
 	}
 
 	public void setGeoflex(List<String> geoflex) {
 		this.geoflex = geoflex;
-	}
+	}*/
 
 	public int getPhoneNumber() {
 		return phoneNumber;
@@ -145,12 +150,12 @@ public class Trainee extends User{
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
+/*
 	@Override
 	public String toString() {
 		return "Trainee [startDate=" + startDate + ", endDate=" + endDate + ", skills=" + skills + ", degree=" + degree
 				+ ", degreeName=" + degreeName + ", degreeType=" + degreeType + ", location=" + location + ", geoflex="
 				+ geoflex + ", phoneNumber=" + phoneNumber + "]";
-	}
+	}*/
 	
 }

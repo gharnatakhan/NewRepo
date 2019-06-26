@@ -1,7 +1,34 @@
 package com.fdmgroup.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CAULDRON_USER")
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="user_type",discriminatorType=DiscriminatorType.STRING)
+@NamedQueries({
+	@NamedQuery(name = "user.findAll", query = "SELECT u FROM User u"),
+//	@NamedQuery(name = "user.findAllActive", query = "SELECT u FROM User u WHERE u.active = true"),
+	@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u where u.email = :uemail"),
+//	@NamedQuery(name = "user.findAllAdmins", query = "SELECT u FROM AdminUser u where TYPE(u) = AdminUser"),
+	@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type")
+})
 public class User {
 	
+	@Id
+	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 	
 	private String firstName;
@@ -17,9 +44,8 @@ public class User {
 	private String password;
 
 
-	public User(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public User(String firstName, String lastName, String email, String role, String photoPath,
 			String password) {
-		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

@@ -2,14 +2,19 @@ package com.fdmgroup.model;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("AccountManager")
 public class AccountManager extends User{
 	
-	private List<JobPosting> jobPostings;
+	/*private List<JobPosting> jobPostings;*/
 
-	public AccountManager(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager(String firstName, String lastName, String email, String role, String photoPath,
 			String password, List<JobPosting> jobPostings) {
-		super(userId, firstName, lastName, email, role, photoPath, password);
-		this.jobPostings = jobPostings;
+		super(firstName, lastName, email, role, photoPath, password);
+	/*	this.jobPostings = jobPostings;*/
 	}
 
 	public AccountManager() {
@@ -17,12 +22,12 @@ public class AccountManager extends User{
 		// TODO Auto-generated constructor stub
 	}
 
-	public AccountManager(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager( String firstName, String lastName, String email, String role, String photoPath,
 			String password) {
-		super(userId, firstName, lastName, email, role, photoPath, password);
+		super( firstName, lastName, email, role, photoPath, password);
 		// TODO Auto-generated constructor stub
 	}
-
+/*
 	public List<JobPosting> getJobPostings() {
 		return jobPostings;
 	}
@@ -34,6 +39,6 @@ public class AccountManager extends User{
 	@Override
 	public String toString() {
 		return "AccountManager [jobPostings=" + jobPostings + "]";
-	}
+	}*/
 	
 }
