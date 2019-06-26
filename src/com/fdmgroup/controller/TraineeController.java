@@ -88,6 +88,9 @@ public class TraineeController {
 		if(foundJob != null) {
 			//need to change constructor for app to not include id
 			Application app = new Application(0,user.getUserId(), foundJob.getJobPostingId(), elevatorPitch);
+			//persist application into DB
+			appDao.create(app);
+			model.addAttribute("infoMsg", "Successfully applied to job.");
 		}
 		
 		//redirect to landing page after application
