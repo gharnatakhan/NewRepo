@@ -2,11 +2,28 @@ package com.fdmgroup.model;
 
 
 import java.time.LocalDateTime;
-
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@Entity
+@NamedQueries({
+	@NamedQuery(name = "jobPosting.findAll", query = "SELECT j FROM JobPosting j"),
+//	@NamedQuery(name = "user.findAllActive", query = "SELECT u FROM User u WHERE u.active = true"),
+//	@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u where u.email = :uemail"),
+//	@NamedQuery(name = "user.findAllAdmins", query = "SELECT u FROM AdminUser u where TYPE(u) = AdminUser"),
+//	@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type")
+})
 public class JobPosting {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int jobPostingId;
 	private int numberOfPositions;
 	private Client client;

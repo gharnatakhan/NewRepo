@@ -1,5 +1,10 @@
 package com.fdmgroup.model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("SystemAdministrator")
 public class SystemAdministrator extends User{
 
 	public SystemAdministrator() {
@@ -7,9 +12,9 @@ public class SystemAdministrator extends User{
 		// TODO Auto-generated constructor stub
 	}
 
-	public SystemAdministrator(int userId, String firstName, String lastName, String email, String role,
+	public SystemAdministrator(String firstName, String lastName, String email, String role,
 			String photoPath, String password) {
-		super(userId, firstName, lastName, email, role, photoPath, password);
+		super( firstName, lastName, email, role, photoPath, password);
 		// TODO Auto-generated constructor stub
 	}
 

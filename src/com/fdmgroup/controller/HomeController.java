@@ -1,6 +1,8 @@
 
 package com.fdmgroup.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,8 @@ import com.fdmgroup.dao.UserDao;
 import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.Client;
+import com.fdmgroup.model.JobPosting;
+
 import com.fdmgroup.model.SalesAdministrator;
 import com.fdmgroup.model.SystemAdministrator;
 import com.fdmgroup.model.Trainee;
@@ -67,7 +71,7 @@ public class HomeController {
 		if(user != null ) {
 			if(user.getClass() == Trainee.class) {
 				//finds all job postings for trainee
-				List<JobPostingDao> listOfJobPostings = jobPostingdao.findAll();
+				List<JobPosting> listOfJobPostings = jobPostingdao.findAll();
 				model.addAttribute("listOfJobPostings",listOfJobPostings);
 				return "jobPosting";
 			}
