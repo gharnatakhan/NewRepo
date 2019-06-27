@@ -35,7 +35,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public String showLanding(HttpSession session, @RequestParam String email, @RequestParam String password, Model model) {
-		System.out.println("-- Login --");		
+		System.out.println("-- Login --");	
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("user", user);
 		// Is there a logged in User
@@ -47,12 +47,14 @@ public class HomeController {
 			UserDao userDao = new UserDao();
 			User foundUser = userDao.findByEmail(email);
 			if (foundUser != null && foundUser.getPassword().equals(password)) {
+				System.out.println("logging in");
 				// User logs in and is added to session
 				session.setAttribute("user", foundUser);
 				return redirectUser(foundUser);
 			}
 			else {
 				// User does not login
+				model.addAttribute("errorMsg", "Failed Login");
 				return "index";
 			}
 

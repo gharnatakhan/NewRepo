@@ -30,7 +30,7 @@ public class TestingApp {
 		GeoFlex gf = new GeoFlex();
 		LocalDate endDate = LocalDate.now();
 		LocalDate startDate = LocalDate.now();
-		Trainee trainee = new Trainee("d", "lastName", "email", "role", "photoPath", "password",111);
+		Trainee trainee = new Trainee("d", "lastName", "email@fdm.com", "role", "photoPath", "password",111);
 		
 		AccountManager accountManager = new AccountManager( "firstName", "lastName", "email", "role", "photoPath", "password", 123);
 		Client client1 = new Client("RBC Bank", "Toronto", accountManager); 
@@ -55,8 +55,8 @@ public class TestingApp {
 		p1.setTrainees(trainees);
 		p2.setTrainees(trainees);
 		
-//		userDao.create(trainee);
-//		userDao.create(accountManager);
+		userDao.create(trainee);
+		userDao.create(accountManager);
 //		clientDao.create(client1);
 		pdao.create(p1);
 		pdao.create(p2);
