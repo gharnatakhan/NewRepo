@@ -25,18 +25,7 @@ import com.fdmgroup.model.User;
 @Controller
 public class SalesAdminController {
 	
-	//view all trainee application
-	@RequestMapping(value="/applicationHistory", method=RequestMethod.GET)
-	public String viewAllApplicationHistory(HttpSession session, Model model) {
-		System.out.println("Show all trainees' application histories");
-		
-		User user = (User) session.getAttribute("user");
-		UserDao userDao = new UserDao();
-		List<Application> listOfApplicationHistories= userDao.findAllApplications();
-		
-		return "applicationHistory";
-	}
-	
+
 	// view all application history by client id
 	@RequestMapping(value="/applicationHistory/{firstName}")
 	public String findTraineeApplicationHistory(@PathVariable String firstName, HttpSession session, Model model) {
