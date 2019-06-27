@@ -19,8 +19,8 @@ import com.fdmgroup.model.SalesAdministrator;
 import com.fdmgroup.model.SystemAdministrator;
 import com.fdmgroup.model.Trainee;
 
-public class TestingApp {
-
+public class CreateDummyUsers {
+	
 	public static void main(String[] args) {
 
 		UserDao userDao = new UserDao();
@@ -79,12 +79,10 @@ public class TestingApp {
 		userDao.create(sysadmin);
 		
 		
-//		clientDao.create(client1);
-//		pdao.create(p1);
-//		pdao.create(p2);
-//		jdao.create(jobPosting);
+
 		System.out.println("\nData stored");
 
 	}
+
 
 }
