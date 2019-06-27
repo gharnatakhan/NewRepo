@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-
+import com.fdmgroup.model.Trainee;
 import com.fdmgroup.model.User;
 
 public class UserDao {
@@ -25,6 +25,16 @@ public class UserDao {
 		em.close();
 		
 		return user;
+	}
+	
+	public Trainee create(Trainee trainee){
+		EntityManager em = connection.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(trainee);
+		em.getTransaction().commit();
+		em.close();
+		
+		return trainee;
 	}
 	
 	public void remove(User user){

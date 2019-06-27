@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * @author Hang.Wang
@@ -48,6 +49,8 @@ public class JobPosting {
 
 	private String jobTitle;
 
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="geoflexId")
 	private GeoFlex location;
 
 	private LocalDateTime applicationDeadline;

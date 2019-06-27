@@ -18,6 +18,8 @@ public class Preference {
 	
 	private String preferenceName;
 	
+	private String imageURL;
+	
 	@ManyToMany(mappedBy="traineePreferences")
 	private List<Trainee> trainees = new ArrayList<>();
 
@@ -62,8 +64,11 @@ public class Preference {
 		this.trainees = trainees;
 	}
 
-	
-
+	@Override
+	public String toString() {
+		return "Preference [preferenceId=" + preferenceId + ", preferenceName=" + preferenceName + ", trainees="
+				+ trainees + "]";
+	}
 
 	
 }
