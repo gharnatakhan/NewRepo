@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdmgroup.dao.UserDao;
@@ -32,9 +33,9 @@ public class HomeController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public String showLanding(HttpSession session, @RequestParam String email, @RequestParam String password, Model model) {
-		System.out.println("-- HomeController --");		
+		System.out.println("-- Login --");		
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("user", user);
 		// Is there a logged in User
@@ -73,6 +74,7 @@ public class HomeController {
 	}
 	
 	private static String redirectUser(User user) {
+		System.out.println("-- helper --");
 			if (user.getClass() == Trainee.class) {
 				// Forward to job postings
 				System.out.println("Trainee signed in");
