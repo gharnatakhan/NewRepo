@@ -25,9 +25,11 @@ public class Trainee extends User {
 
 	private LocalDate endDate;
 
-	private enum status {
+	public static enum allStatuses {
 		PREGATE, INTRAINING, SIGNEDOFF, BEACHED, OTHER
 	}
+	
+	private String status;
 
 	private String university;
 
@@ -42,10 +44,6 @@ public class Trainee extends User {
 	private List<Preference> traineePreferences = new ArrayList<>();
 
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="Trainee_Skill")
-	private List<Skill> skills = new ArrayList<>();
-
-	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="Trainee_GeoFlex")
 	private List<GeoFlex> geoflex = new ArrayList<>();
 
@@ -57,17 +55,16 @@ public class Trainee extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Trainee(String firstName, String lastName, String email, String photoPath,
-			String password, int phoneNumber) {
+	public Trainee(String firstName, String lastName, String email, String photoPath, String password,
+			int phoneNumber) {
 		super(firstName, lastName, email, photoPath, password, phoneNumber);
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public Trainee(Batch batch, LocalDate startDate, LocalDate endDate, String university, String major,
-			String degreeType, String location, List<Preference> traineePreferences, List<Skill> skills,
-			List<GeoFlex> geoflex, List<Application> applicationHistory) {
+			String degreeType, String location, List<Preference> traineePreferences, List<GeoFlex> geoflex,
+			List<Application> applicationHistory) {
+		super();
 		this.batch = batch;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -76,7 +73,23 @@ public class Trainee extends User {
 		this.degreeType = degreeType;
 		this.location = location;
 		this.traineePreferences = traineePreferences;
-		this.skills = skills;
+		this.geoflex = geoflex;
+		this.applicationHistory = applicationHistory;
+	}
+
+	public Trainee(String firstName, String lastName, String email, String photoPath, String password, int phoneNumber,
+			Batch batch, LocalDate startDate, LocalDate endDate, String university, String major, String degreeType,
+			String location, List<Preference> traineePreferences, List<GeoFlex> geoflex,
+			List<Application> applicationHistory) {
+		super(firstName, lastName, email, photoPath, password, phoneNumber);
+		this.batch = batch;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.university = university;
+		this.major = major;
+		this.degreeType = degreeType;
+		this.location = location;
+		this.traineePreferences = traineePreferences;
 		this.geoflex = geoflex;
 		this.applicationHistory = applicationHistory;
 	}
@@ -145,14 +158,6 @@ public class Trainee extends User {
 		this.traineePreferences = traineePreferences;
 	}
 
-	public List<Skill> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(List<Skill> skills) {
-		this.skills = skills;
-	}
-
 	public List<GeoFlex> getGeoflex() {
 		return geoflex;
 	}
@@ -173,9 +178,8 @@ public class Trainee extends User {
 	public String toString() {
 		return "Trainee [batch=" + batch + ", startDate=" + startDate + ", endDate=" + endDate + ", university="
 				+ university + ", major=" + major + ", degreeType=" + degreeType + ", location=" + location
-				+ ", traineePreferences=" + traineePreferences + ", skills=" + skills + ", geoflex=" + geoflex
-				+ ", applicationHistory=" + applicationHistory + "]";
+				+ ", traineePreferences=" + traineePreferences + ", geoflex=" + geoflex + ", applicationHistory="
+				+ applicationHistory + "]";
 	}
-
 	
 }

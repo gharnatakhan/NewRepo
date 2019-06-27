@@ -2,26 +2,22 @@ package com.fdmgroup.dao;
 
 import javax.persistence.EntityManager;
 
-import com.fdmgroup.model.GeoFlex;
-import com.fdmgroup.model.Skill;
+import com.fdmgroup.model.Batch;
 
-public class SkillDao {
-	
+public class BatchDao {
 	private DbConnection connection;
-
-	public SkillDao() {
+	
+	public BatchDao() {
 		super();
 		connection = DbConnection.getInstance();
 	}
 	
-	public Skill create(Skill skill){
+	public Batch create(Batch batch){
 		EntityManager em = connection.getEntityManager();
 		em.getTransaction().begin();
-		em.persist(skill);
+		em.persist(batch);
 		em.getTransaction().commit();
 		em.close();
-		return skill;
+		return batch;
 	}
-	
-
 }
