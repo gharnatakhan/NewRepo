@@ -69,6 +69,20 @@ public class JobPosting {
 		// TODO Auto-generated constructor stub
 	}
 
+	public JobPosting(int numberOfPositions, int clientId, AccountManager accountManager, String jobTitle,
+			String location, LocalDateTime applicationDeadline, String jobDescription,
+			List<Preference> wantedPreferences) {
+		super();
+		this.numberOfPositions = numberOfPositions;
+		this.clientId = clientId;
+		this.accountManager = accountManager;
+		this.jobTitle = jobTitle;
+		this.location = location;
+		this.applicationDeadline = applicationDeadline;
+		this.jobDescription = jobDescription;
+		this.wantedPreferences = wantedPreferences;
+	}
+
 	public JobPosting(int numberOfPositions, int clientId, AccountManager accountManager,
 			String jobTitle, String location, LocalDateTime applicationDeadline, String jobDescription,
 			List<Preference> wantedPreferences, List<Comment> comments, List<Application> applications) {

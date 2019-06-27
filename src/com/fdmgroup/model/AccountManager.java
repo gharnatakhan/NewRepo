@@ -31,9 +31,9 @@ public class AccountManager extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AccountManager(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager(String firstName, String lastName, String email, String role, String photoPath,
 			String password, int phoneNumber) {
-		super(userId, firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -42,9 +42,9 @@ public class AccountManager extends User {
 		this.clients = clients;
 	}
 
-	public AccountManager(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager(String firstName, String lastName, String email, String role, String photoPath,
 			String password, int phoneNumber, List<JobPosting> jobPostings, List<Client> clients) {
-		super(userId, firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
 		this.jobPostings = jobPostings;
 		this.clients = clients;
 	}
