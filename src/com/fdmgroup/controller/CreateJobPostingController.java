@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.fdmgroup.dao.ClientDao;
 import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.dao.PreferenceDao;
+import com.fdmgroup.dao.UserDao;
 import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.Client;
 import com.fdmgroup.model.JobPosting;
@@ -24,7 +25,7 @@ import com.fdmgroup.model.User;
 public class CreateJobPostingController {
 	
 	@RequestMapping("/createPosting")
-	public String showCreateJobPosting(Model model, HttpSession session, JobPosting jobPosting) {
+	public String showCreateJobPosting(Model model, HttpSession session, @ModelAttribute("jobPosting")JobPosting jobPosting) {
 		User user = (User)session.getAttribute("user");
 		if(user.getClass() != AccountManager.class) {
 			//If user type is not trainee then redirect to landing page depending on user
@@ -45,16 +46,16 @@ public class CreateJobPostingController {
 	
 	//Method that handles the request for createJobPosting form
 	@RequestMapping(value="/createPostingForm", method=RequestMethod.POST)
-	public String createJobPosting(@Valid @ModelAttribute("jobPosting")JobPosting jobPosting, Model model, BindingResult br, HttpSession session) {
+	public String createJobPosting(@Valid @ModelAttribute("jobPosting")JobPosting jobPosting, BindingResult br, Model model,  HttpSession session) {
 		System.out.println("createPostingForm called");
 		AccountManager user = (AccountManager)session.getAttribute("user");
 		if (br.hasErrors()) {
 			return "createJobPosting";
 		}
-		System.out.println("JobPosting:" + jobPosting.toString());
+		System.out.println("createPosting success!");
 		jobPosting.setAccountManager(user);
-		JobPostingDao jobPostingDao = new JobPostingDao();
-		jobPostingDao.create(jobPosting);
+		//JobPostingDao jobPostingDao = new JobPostingDao();
+		//jobPostingDao.create(jobPosting);
 		return "redirect:/";
 
 	}
