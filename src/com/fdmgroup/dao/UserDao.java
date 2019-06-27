@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 
+import com.fdmgroup.model.Trainee;
 import com.fdmgroup.model.User;
 
 public class UserDao {
@@ -25,6 +26,16 @@ public class UserDao {
 		em.close();
 		
 		return user;
+	}
+	
+	public Trainee create(Trainee trainee){
+		EntityManager em = connection.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(trainee);
+		em.getTransaction().commit();
+		em.close();
+		
+		return trainee;
 	}
 	
 	public void remove(User user){
@@ -51,6 +62,15 @@ public class UserDao {
 		em.getTransaction().commit();
 		em.close();
 	}*/
+	
+	public void updateTraineeStatus(Trainee trainee) {
+		EntityManager em = connection.getEntityManager();
+		Trainee foundTrainee = em.find(Trainee.class, trainee.getUserId());
+		em.getTransaction().begin();
+		foundTrainee.setStatus(trainee.getStatus());
+		em.getTransaction().commit();
+		em.close();
+	}
 	
 	public User findById(int id) {
 		EntityManager em = connection.getEntityManager();
@@ -103,6 +123,16 @@ public class UserDao {
 		List<User> users = query.getResultList();
 		em.close();
 		return users;
+	}
+	
+	public void updateTraineeStatus(Trainee trainee)
+	{
+		EntityManager em = connection.getEntityManager();
+		Trainee foundTrainee = em.find(Trainee.class,trainee.getUserId());
+		em.getTransaction().begin();
+		foundTrainee.setStatus(trainee.getStatus());
+		em.getTransaction().commit();
+		em.close();
 	}
 
 }

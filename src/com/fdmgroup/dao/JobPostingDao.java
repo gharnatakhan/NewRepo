@@ -5,13 +5,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.Client;
+import com.fdmgroup.model.GeoFlex;
 import com.fdmgroup.model.JobPosting;
 import com.fdmgroup.model.User;
 
 public class JobPostingDao {
 	
 	private DbConnection connection;
+	
+	private AccountManagerDao amDao = new AccountManagerDao();
+	private GeoFlexDao gfDao = new GeoFlexDao();
 
 	public JobPostingDao() {
 		super();
@@ -21,10 +26,15 @@ public class JobPostingDao {
 	public JobPosting create(JobPosting jobPosting){
 		EntityManager em = connection.getEntityManager();
 		em.getTransaction().begin();
-		em.persist(jobPosting);
+		int accountManagerId = jobPosting.getAccountManager().getUserId();
+		AccountManager accountManager = amDao.findbyAccountManagerId(accountManagerId);
+		int geoFlexId = jobPosting.getLocation().getGeoflexId();
+		GeoFlex geoFlex = gfDao.findbyGeoFlexId(geoFlexId);
+		JobPosting newJobPosting = new JobPosting(jobPosting.getNumberOfPositions(), jobPosting.getClientId(), accountManager, jobPosting.getJobTitle(), geoFlex, jobPosting.getApplicationDeadline(), jobPosting.getJobDescription(), jobPosting.getWantedPreferences()) ;
+		em.persist(newJobPosting);
 		em.getTransaction().commit();
 		em.close();
-		return jobPosting;
+		return newJobPosting;
 	}
 	
 	
