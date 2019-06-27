@@ -1,17 +1,38 @@
 package com.fdmgroup.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+@Entity
+//@NamedQueries({ 
+	
+	@NamedQuery(name = "client.findAll", query = "SELECT c FROM Client c")
+//,}
+	// @NamedQuery(name = "user.findAllActive", query = "SELECT u FROM User u WHERE
+	// u.active = true"),
+//	@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u where u.email = :uemail"),
+	// @NamedQuery(name = "user.findAllAdmins", query = "SELECT u FROM AdminUser u
+	// where TYPE(u) = AdminUser"),
+//	@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type") })
 public class Client {
+	@Id
 	private int clientId;
-	
+
 	private String name;
-	
+
 	private String location;
 
-	public Client(int clientId, String name, String location) {
-		this.clientId = clientId;
-		this.name = name;
-		this.location = location;
-	}
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userId")
+	private AccountManager accountManager;
 
 	public Client() {
 		super();
@@ -42,9 +63,18 @@ public class Client {
 		this.location = location;
 	}
 
+	public AccountManager getAccountManager() {
+		return accountManager;
+	}
+
+	public void setAccountManager(AccountManager accountManager) {
+		this.accountManager = accountManager;
+	}
+
 	@Override
 	public String toString() {
-		return "Client [clientId=" + clientId + ", name=" + name + ", location=" + location + "]";
+		return "Client [clientId=" + clientId + ", name=" + name + ", location=" + location + ", accountManager="
+				+ accountManager + "]";
 	}
-	
+
 }
