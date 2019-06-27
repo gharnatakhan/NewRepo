@@ -32,10 +32,14 @@ public class TestingApp {
 		GeoFlex gf = new GeoFlex();
 		LocalDate endDate = LocalDate.now();
 		LocalDate startDate = LocalDate.now();
+<<<<<<< HEAD
 		Trainee trainee1 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
 		Trainee trainee2 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
 		Trainee trainee3 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
 		Trainee trainee4 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
+=======
+		Trainee trainee = new Trainee("d", "lastName", "email@fdm.com", "role", "photoPath", "password",111);
+>>>>>>> master
 		
 		AccountManager accountManager1 = new AccountManager( "firstName", "lastName", "email", "AccountManager", "photoPath", "password", 123);
 		AccountManager accountManager2 = new AccountManager( "firstName", "lastName", "email", "AccountManager", "photoPath", "password", 123);
@@ -68,6 +72,7 @@ public class TestingApp {
 		p1.setTrainees(trainees);
 		p2.setTrainees(trainees);
 		
+<<<<<<< HEAD
 		userDao.create(trainee1);
 		userDao.create(trainee2);
 		userDao.create(trainee3);
@@ -79,6 +84,10 @@ public class TestingApp {
 		userDao.create(sysadmin);
 		
 		
+=======
+		userDao.create(trainee);
+		userDao.create(accountManager);
+>>>>>>> master
 //		clientDao.create(client1);
 //		pdao.create(p1);
 //		pdao.create(p2);

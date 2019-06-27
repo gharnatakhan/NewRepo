@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdmgroup.dao.UserDao;
@@ -27,15 +28,16 @@ import com.fdmgroup.model.User;
 public class HomeController {
 
 	@RequestMapping(value = "/")
-	public String showIndex(HttpSession session, Model model) {
+	public String showIndex() {
 		System.out.println("-- MainPage --");
 		return "index";
 	}
 	
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public String showLanding(HttpSession session, @RequestParam String email, @RequestParam String password, Model model) {
-		System.out.println("-- HomeController --");
+		System.out.println("-- Login --");	
 		User user = (User) session.getAttribute("user");
+		model.addAttribute("user", user);
 		// Is there a logged in User
 		if (user != null) {
 			return redirectUser(user);
@@ -45,12 +47,14 @@ public class HomeController {
 			UserDao userDao = new UserDao();
 			User foundUser = userDao.findByEmail(email);
 			if (foundUser != null && foundUser.getPassword().equals(password)) {
+				System.out.println("logging in");
 				// User logs in and is added to session
 				session.setAttribute("user", foundUser);
 				return redirectUser(foundUser);
 			}
 			else {
 				// User does not login
+				model.addAttribute("errorMsg", "Failed Login");
 				return "index";
 			}
 
@@ -72,6 +76,7 @@ public class HomeController {
 	}
 	
 	private static String redirectUser(User user) {
+		System.out.println("-- helper --");
 			if (user.getClass() == Trainee.class) {
 				// Forward to job postings
 				System.out.println("Trainee signed in");

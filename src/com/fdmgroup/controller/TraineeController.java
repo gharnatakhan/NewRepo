@@ -92,7 +92,7 @@ public class TraineeController {
 		if(foundJob != null) {
 			//need to change constructor for app to not include id
 			
-			Application app = new Application((Trainee)user, foundJob, "elevatorPitch");
+			Application app = new Application((Trainee)user, foundJob, elevatorPitch);
 			//persist application into DB
 			appDao.create(app);
 			model.addAttribute("infoMsg", "Successfully applied to job.");
