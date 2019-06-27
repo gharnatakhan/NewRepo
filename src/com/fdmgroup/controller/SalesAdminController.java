@@ -21,8 +21,8 @@ import com.fdmgroup.model.User;
 @Controller
 public class SalesAdminController {
 	
-	//view all trainee application
-	@RequestMapping(value="/applicationHistory", method=RequestMethod.GET)
+	//view all trainee application. Note that we don't need this
+/*	@RequestMapping(value="/applicationHistory", method=RequestMethod.GET)
 	public String viewAllApplicationHistory(HttpSession session, Model model) {
 		System.out.println("Show all trainees' application histories");
 		
@@ -32,13 +32,14 @@ public class SalesAdminController {
 		
 		return "applicationHistory";
 	}
+	*/
 	
 	// view all application history by client id
 	@RequestMapping(value="/applicationHistory/{firstName}")
 	public String findTraineeApplicationHistory(@PathVariable String firstName, HttpSession session, Model model) {
 		// need a condition that if the trainee name is equal to the name input 
 		UserDao userDao = new UserDao();
-		List<Application> listOfApplicationHistories = userDao.findApplicationsByFirstName(firstName);
+		List<Application> listOfApplicationHistories = userDao.findApplicationsByTraineeId(firstName);
 		model.addAttribute("listOfApplicationHistories", listOfApplicationHistories);
 		
 		return "applicationHistory";
