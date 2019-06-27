@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fdmgroup.dao.ClientDao;
-import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.dao.PreferenceDao;
-import com.fdmgroup.dao.UserDao;
 import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.Client;
 import com.fdmgroup.model.JobPosting;
