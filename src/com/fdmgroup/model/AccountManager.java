@@ -8,9 +8,15 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({
+@NamedQuery(name = "accountManager.findAll", query = "SELECT a FROM AccountManager a"),
+@NamedQuery(name = "accountManager.findBy", query = "SELECT u FROM User u where u.email = :uemail")
+})
 @DiscriminatorValue("AccountManager")
 public class AccountManager extends User {
 
@@ -25,9 +31,9 @@ public class AccountManager extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AccountManager(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager(String firstName, String lastName, String email, String role, String photoPath,
 			String password, int phoneNumber) {
-		super(userId, firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -36,9 +42,9 @@ public class AccountManager extends User {
 		this.clients = clients;
 	}
 
-	public AccountManager(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager(String firstName, String lastName, String email, String role, String photoPath,
 			String password, int phoneNumber, List<JobPosting> jobPostings, List<Client> clients) {
-		super(userId, firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
 		this.jobPostings = jobPostings;
 		this.clients = clients;
 	}

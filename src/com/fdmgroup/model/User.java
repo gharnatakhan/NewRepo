@@ -50,20 +50,11 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String firstName, String lastName, String email, String role, String photoPath, String password,
-			int phoneNumber) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.role = role;
-		this.photoPath = photoPath;
-		this.password = password;
-		this.phoneNumber = phoneNumber;
-	}
+	
 
-	public User(int userId, String firstName, String lastName, String email, String role, String photoPath,
+	public User(String firstName, String lastName, String email, String role, String photoPath,
 			String password, int phoneNumber) {
-		this.userId = userId;
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

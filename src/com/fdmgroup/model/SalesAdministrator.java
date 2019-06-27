@@ -12,9 +12,9 @@ public class SalesAdministrator extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SalesAdministrator(int userId, String firstName, String lastName, String email, String role,
+	public SalesAdministrator(String firstName, String lastName, String email, String role,
 			String photoPath, String password, int phoneNumber) {
-		super(userId, firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
 		// TODO Auto-generated constructor stub
 	}
 

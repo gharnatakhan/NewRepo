@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,9 +26,17 @@ import javax.persistence.NamedQuery;
 //	@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type") })
 public class Client {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int clientId;
 
 	private String name;
+
+	public Client(String name, String location, AccountManager accountManager) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.accountManager = accountManager;
+	}
 
 	private String location;
 

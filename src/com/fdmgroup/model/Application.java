@@ -86,4 +86,13 @@ public class Application {
 				+ ", applicationTime=" + applicationTime + ", elevatorPitch=" + elevatorPitch + "]";
 	}
 
+	public Application(Trainee trainee, JobPosting jobPosting, String elevatorPitch) {
+		super();
+		this.trainee = trainee;
+		this.jobPosting = jobPosting;
+		this.applicationTime = LocalDateTime.now();
+		this.elevatorPitch = elevatorPitch;
+	}
+	
+
 }

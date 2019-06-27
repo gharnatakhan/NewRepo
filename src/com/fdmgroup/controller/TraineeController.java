@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fdmgroup.dao.AccountManagerDao;
+import com.fdmgroup.dao.ApplicationDao;
 import com.fdmgroup.dao.JobPostingDao;
 import com.fdmgroup.model.AccountManager;
 import com.fdmgroup.model.Application;
@@ -67,7 +69,9 @@ public class TraineeController {
 			return "redirect:/";
 		}
 		// finds account managers by name
-		List<AccountManager> listofAccountManagers = amDao.findbyAccountManagerName(name);
+		
+		// Changed method name to findbyAccountManagerLastName(name) on sugguestion by Nithin - Anurag Das
+		List<AccountManager> listofAccountManagers = amDao.findbyAccountManagerLastName(name);
 		model.addAttribute("listofAccountManagers", listofAccountManagers);
 		return "accountManagers";
 	}
@@ -87,7 +91,8 @@ public class TraineeController {
 		JobPosting foundJob = jobDao.findById(jobId);
 		if(foundJob != null) {
 			//need to change constructor for app to not include id
-			Application app = new Application(0,user.getUserId(), foundJob.getJobPostingId(), elevatorPitch);
+			
+			Application app = new Application((Trainee)user, foundJob, "elevatorPitch");
 			//persist application into DB
 			appDao.create(app);
 			model.addAttribute("infoMsg", "Successfully applied to job.");
