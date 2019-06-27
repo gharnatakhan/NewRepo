@@ -6,8 +6,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "geoFlex.findAll", query = "SELECT g FROM GeoFlex g")
 public class GeoFlex {
 	@Id
 	private int geoflexId;

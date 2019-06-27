@@ -62,13 +62,13 @@ public class TestingApp {
 		
 		
 		LocalDateTime applicationDeadline = LocalDateTime.now();
-		JobPosting jobPosting = new JobPosting(1, 3, accountManager1, "software dev", "toronto", applicationDeadline , "jobDescription", preferences);
+//		JobPosting jobPosting = new JobPosting(1, 3, accountManager1, "software dev", "toronto", applicationDeadline , "jobDescription", preferences);
 		List<JobPosting> jobPostings = new ArrayList<>();
 		List<Trainee> trainees = new ArrayList<>();
 		trainees.add(trainee1);
-		jobPostings.add(jobPosting);
-		p1.setJobPostings(jobPostings);
-		p2.setJobPostings(jobPostings);
+//		jobPostings.add(jobPosting);
+//		p1.setJobPostings(jobPostings);
+//		p2.setJobPostings(jobPostings);
 		p1.setTrainees(trainees);
 		p2.setTrainees(trainees);
 

@@ -17,7 +17,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="J:/MavenRepository/com/oracle/ojdbc6/11.2.0.3/ojdbc6-11.2.0.3.jar">
+	<classpathentry kind="lib" path="H:/Documents/Java/Data Access/ojdbc7/ojdbc7.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "preference.findAll", query = "SELECT p FROM Preference p")
 public class Preference {
 	
 	@Id
@@ -17,6 +19,8 @@ public class Preference {
 	private int preferenceId;
 	
 	private String preferenceName;
+	
+	private String imageURL;
 	
 	@ManyToMany(mappedBy="traineePreferences")
 	private List<Trainee> trainees = new ArrayList<>();
@@ -62,8 +66,11 @@ public class Preference {
 		this.trainees = trainees;
 	}
 
-	
-
+	@Override
+	public String toString() {
+		return "Preference [preferenceId=" + preferenceId + ", preferenceName=" + preferenceName + ", trainees="
+				+ trainees + "]";
+	}
 
 	
 }
