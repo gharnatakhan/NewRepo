@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- <head>
@@ -9,67 +10,24 @@
 <body>
 	<h1>JOB POSTING</h1>
 </body> -->
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Local CSS --> 
-    <!-- <link rel="stylesheet" href="style.css" /> -->
-    <style> 
-        body, html{
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            /*box-sizing: border-box;
-            border: 1px solid red;*/
-            overflow-y: auto;
-        }
-
-        .container{ 
-            height: 100%;
-            box-sizing: border-box;
-            border: 1px solid black;
-        }
-
-        .jobslisting-container{
-            box-sizing: border-box;
-            border: 1px solid green;
-            margin-left: 0;
-            height: 100%;
-            width: 40%;
-            float: left;
-        }
-
-        .jobdesc-container{
-            box-sizing: border-box;
-            border: 1px solid blue;
-            margin-right: 0;
-            height: 100%;
-            width: 60%;
-            float: right;
-            padding: 1.5rem;
-        }
-
-        .job-otherinfo-div{
-            box-sizing: border-box;
-            border: 1px solid black;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .job-otherinfo-div > div{
-            background: red;
-            text-align: center;
-        }
-    </style> <!-- /CSS -->
-      
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      
-    <title>Trainee Job Postings</title>
-  </head>
-  <body>
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Local CSS -->
+	<link rel="stylesheet" href="http://localhost:8088/cauldron/css/jobPostingStyles.css" type="text/css" />
+		
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous">
+	
+	<title> Cauldron Job Postings</title>
+</head>
+    <body>
       
       <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand text-white" href="#">Cauldron</a>
@@ -111,8 +69,9 @@
           
           <div class="jobslisting-container">
               
-            <ul class="list-group">
+            <ul class="jobslisting list-group">
               <li class="list-group-item">
+                <div class="img-div"> <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> </div>
                 <div class="summary-div">
                     <h4> Job Title </h4>
                     <p> Client </p>
@@ -121,6 +80,7 @@
               </li>
                 
               <li class="list-group-item">
+                <div class="img-div"> <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> </div>
                 <div class="summary-div">
                     <h4> Job Title </h4>
                     <p> Client </p>
@@ -129,6 +89,7 @@
               </li>
                 
               <li class="list-group-item">
+                <div class="img-div"> <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> </div>
                 <div class="summary-div">
                     <h4> Job Title </h4>
                     <p> Client </p>
@@ -137,6 +98,7 @@
               </li>
                 
               <li class="list-group-item">
+                <div class="img-div"> <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> </div>
                 <div class="summary-div">
                     <h4> Job Title </h4>
                     <p> Client </p>
@@ -144,9 +106,53 @@
                 </div>
               </li>
                 
-            </ul>
+              <li class="list-group-item">
+                <div class="img-div"> <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> </div>
+                <div class="summary-div">
+                    <h4> Job Title </h4>
+                    <p> Client </p>
+                    <p> Location </p>
+                </div>
+              </li>
+                
+                
+              <li class="list-group-item">
+                  <div class="img-div">
+                      <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> 
+                  </div>
+                  <div class="summary-div">
+                      <h4> Job Title </h4>
+                      <p> Client </p>
+                      <p> Location </p>
+                  </div>
+              </li>
+                
+
+              <li class="list-group-item">
+                  <div class="img-div">
+                      <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> 
+                  </div>
+                  <div class="summary-div">
+                      <h4> Job Title </h4>
+                      <p> Client </p>
+                      <p> Location </p>
+                  </div>
+              </li>
+
+              <li class="list-group-item">
+                  <div class="img-div">
+                      <img src="https://www.daviskarate.com/wp-content/uploads/2017/04/default-image.jpg" alt="Client Image" /> 
+                  </div>
+                  <div class="summary-div">
+                      <h4> Job Title </h4>
+                      <p> Client </p>
+                      <p> Location </p>
+                  </div>
+              </li>
+                
+            </ul> <!-- /.jobslisting list-group-->
               
-          </div> <!-- .jobslisting-container -->
+          </div> <!-- /.jobslisting-container -->
           
           <div class="jobdesc-container">
             
@@ -155,7 +161,37 @@
                 <p> Client </p>
                 <p> Location </p>
                 <p>Account Manager: <a href=""> Mr. Account Manager</a></p>
-              </div>  
+                  
+                <!-- Open Model, for 'Tell me why you are interested?' -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applyModal">
+                  Apply
+                </button>
+                  
+                <!-- Modal -->
+                <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"> Why are you the right fit for this role? </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form:form method="post" action="#" modelAttribute="app">
+                          <div class="modal-body">
+                            <textarea path="elevatorPitch" id="tell-me-more" cols="65" rows="3" wrap="hard" required></textarea>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                          </div>
+                      </form:form>
+                    </div>
+                  </div>
+                </div>
+                  
+              </div>  <!-- /.job-title-div -->
               
               <div class="job-otherinfo-div">
                 <div id="num-roles"> 
@@ -174,23 +210,102 @@
                 </div>
               </div>
               
-              
               <div class="job-desc-div">
-                <h4>Description</h4>
+                <h4>Job Description</h4>
+                <div class="job-desc-area">
+                    <p>
+                        <strong> Position Summary </strong> 
+                    </p>
+                    
+                    <p>
+                        Working in a team-based environment, the incumbent is responsible for providing consultation, evaluation, analysis, technical direction, website design, programming and development. The incumbent independently applies specialized technical knowledge to the production of digital and multi-media promotional and educational materials to meet specific requirements. The incumbent supports the work of the Media Production team providing specialized technical advice and assistance to staff and clients.
+                    </p>
+                    
+                    <p>
+                        <strong> Responsibilities Design and Development </strong> 
+                    </p>
+                    
+                    <p>
+                        Designs and programs web pages using HTML5, Java, Javascript, and CSS with “valid” code.
+                        Creates and develops original interactive components and scripts using Javascript.
+                        Describes data using well-formed XML for various purposes including RSS feeds and ensures cross-browser and cross-platform compatibility of web pages
+                        Integrates multi-media, database and other server side features, JSP/HTL/Servlet/EJB in design of Web sites.
+                        Co-ordinates projects through planning, developing, testing, evaluating and advising project teams on effectiveness of potential solutions.
+                        Maintains currency with the fast paced, developing and changing standards of Web page design and associated software particularly Adobe Creative Suite including Dreamweaver.
+                    </p>
+                    
+                    <p> <strong> Consultation </strong> </p>
+                    <p>
+                        Participates in project development teams to ensure technical viability of end product - analyzing and evaluating client projects and technical needs, providing solutions and relating project scopes peripherally related requirements to project development teams and clients
+                        Recommends the appropriate technology.
+                        Determines the maximum quality possible within budget, timeline and production resources available.
+                        Provides senior level support in web design by effectively utilizing the required programs such as Adobe Creative Suite.
+                    </p>
+                </div>
               </div>  
               
               <div class="form-comment">
                   <label for="exampleFormControlTextarea1">Leave a Comment</label>
                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                  <input type="submit" class="btn btn-dark"/>
               </div>
               
               <div class="comments-container-div">
                   
               </div>  
               
-          </div> <!-- .jobdesc-container -->
+          </div> <!-- /.jobdesc-container -->
           
-      </div>    
+      </div> <!-- /.container -->
+      
+      <footer class="page-footer font-small blue pt-4">
+            <!-- Footer Links -->
+            <div class="container-fluid text-center text-md-left">
+                <!-- Grid row -->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-6 mt-md-0 mt-3">
+                        <!-- Content -->
+                        <h5 class="text-uppercase">Auction Site</h5>
+                        <p>Auction anything you want!</p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none pb-3">
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <!-- Links -->
+                        <h5 class="text-uppercase">Links</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="/AuctionSiteBackEnd">Go Home</a>
+                            </li>
+                            <li>
+                                <a href="#!">Check Out Auction Ending Soon</a>
+                            </li>
+                            <li>
+                                <a href="/AuctionSiteBackEnd/register">Register Now</a>
+                            </li>
+                            <li>
+                                <a href="/AuctionSiteBackEnd/login">Login</a>
+                            </li>
+                        </ul>          
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+            <!-- Footer Links -->
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                <a href="http://localhost:8088/AuctionSiteBackEnd/"> Auction Site </a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
       
     <!-- Optional Local Script JavaScript -->
     <script typ="text/javascript">
