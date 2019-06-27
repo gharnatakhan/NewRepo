@@ -33,6 +33,14 @@ public class Trainee extends User {
 
 	private String university;
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	private String major;
 
 	private String degreeType;

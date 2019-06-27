@@ -20,4 +20,24 @@ public class BatchDao {
 		em.close();
 		return batch;
 	}
+	
+	/*	public void update(User user){
+	EntityManager em = connection.getEntityManager();
+	User foundUser = em.find(User.class, user.getUserId());
+	em.getTransaction().begin();
+	
+	if (user.getPassword() != null && !user.getPassword().equals(""))
+		foundUser.setPassword(user.getPassword());
+	if (user.getFirstname() != null && !user.getFirstname().equals(""))
+		foundUser.setFirstname(user.getFirstname());
+	if (user.getLastname() != null && !user.getLastname().equals(""))
+		foundUser.setLastname(user.getLastname());
+
+	em.getTransaction().commit();
+	em.close();
+}*/
+	/*public void update(User user){
+	}
+	}*/
+	
 }

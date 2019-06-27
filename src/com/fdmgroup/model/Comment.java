@@ -11,6 +11,7 @@ public class Comment {
 	@Id
 	private int commentId;
 
+	
 	private String message;
 	
 	private int userId;
