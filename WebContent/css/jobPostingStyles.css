@@ -1,0 +1,87 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	/*box-sizing: border-box;
+    border: 1px solid red;*/
+	overflow-y: auto;
+}
+
+.container {
+	height: 100%;
+	box-sizing: border-box;
+	border: 1px solid black;
+	/*position: sticky;
+    top: 0;*/
+}
+
+.jobslisting-container {
+	box-sizing: border-box;
+	border: 1px solid green;
+	overflow-y: scroll;
+	margin-left: 0;
+	height: 100%;
+	width: 35%;
+	float: left;
+}
+
+.jobdesc-container {
+	box-sizing: border-box;
+	border: 1px solid blue;
+	overflow-y: scroll;
+	margin-right: 0;
+	height: 100%;
+	width: 65%;
+	float: right;
+	padding: 1.5rem;
+	padding-bottom: 5rem;
+}
+
+.job-otherinfo-div {
+	box-sizing: border-box;
+	border: 1px solid black;
+	display: flex;
+	justify-content: space-around;
+	margin: 1.5rem 0 1.5rem 0;
+}
+
+.job-otherinfo-div>div {
+	background: red;
+	text-align: center;
+}
+
+.img-div {
+	width: 6rem;
+	height: 6rem;
+}
+
+.img-div>img {
+	max-width: 100%;
+	height: auto;
+}
+
+.list-group-item>.img-div {
+	float: left;
+	margin-right: 2.5rem;
+}
+
+.list-group-item>.summary-div p {
+	margin-bottom: 0;
+}
+
+.list-group-item>.summary-div p {
+	margin-bottom: 0;
+}
+
+/*Text Area - Apply Modal*/
+#tell-me-more {
+	max-width: 100%;
+}
+
+footer {
+	background-color: beige;
+	/*    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;*/
+}
