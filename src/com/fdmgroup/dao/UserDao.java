@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+
 import com.fdmgroup.model.Trainee;
 import com.fdmgroup.model.User;
 
@@ -122,6 +123,16 @@ public class UserDao {
 		List<User> users = query.getResultList();
 		em.close();
 		return users;
+	}
+	
+	public void updateTraineeStatus(Trainee trainee)
+	{
+		EntityManager em = connection.getEntityManager();
+		Trainee foundTrainee = em.find(Trainee.class,trainee.getUserId());
+		em.getTransaction().begin();
+		foundTrainee.setStatus(trainee.getStatus());
+		em.getTransaction().commit();
+		em.close();
 	}
 
 }

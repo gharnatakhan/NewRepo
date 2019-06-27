@@ -178,6 +178,14 @@ public class Trainee extends User {
 		return applicationHistory;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public void setApplicationHistory(List<Application> applicationHistory) {
 		this.applicationHistory = applicationHistory;
 	}
