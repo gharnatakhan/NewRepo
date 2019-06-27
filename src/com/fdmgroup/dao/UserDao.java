@@ -27,6 +27,16 @@ public class UserDao {
 		return user;
 	}
 	
+	public Trainee create(Trainee trainee){
+		EntityManager em = connection.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(trainee);
+		em.getTransaction().commit();
+		em.close();
+		
+		return trainee;
+	}
+	
 	public void remove(User user){
 		EntityManager em = connection.getEntityManager();
 		User foundUser = em.find(User.class, user.getUserId());
