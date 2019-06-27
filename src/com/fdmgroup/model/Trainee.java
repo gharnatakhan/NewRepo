@@ -57,9 +57,9 @@ public class Trainee extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Trainee(String firstName, String lastName, String email, String role, String photoPath,
+	public Trainee(String firstName, String lastName, String email, String photoPath,
 			String password, int phoneNumber) {
-		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email, photoPath, password, phoneNumber);
 		// TODO Auto-generated constructor stub
 	}
 
