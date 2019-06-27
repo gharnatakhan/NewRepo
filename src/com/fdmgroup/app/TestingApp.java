@@ -66,7 +66,7 @@ public class TestingApp {
 		List<JobPosting> jobPostings = new ArrayList<>();
 		List<Trainee> trainees = new ArrayList<>();
 		trainees.add(trainee1);
-//		jobPostings.add(jobPosting);
+		jobPostings.add(jobPosting);
 //		p1.setJobPostings(jobPostings);
 //		p2.setJobPostings(jobPostings);
 		p1.setTrainees(trainees);

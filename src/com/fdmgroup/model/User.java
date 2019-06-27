@@ -21,6 +21,7 @@ import javax.persistence.Table;
 		// @NamedQuery(name = "user.findAllActive", query = "SELECT u FROM User u WHERE
 		// u.active = true"),
 		@NamedQuery(name = "user.findByEmail", query = "SELECT u FROM User u where u.email = :uemail"),
+		@NamedQuery(name = "user.findByFirstName", query = "SELECT u FROM User u where u.firstName = :ufirstName"),
 		// @NamedQuery(name = "user.findAllAdmins", query = "SELECT u FROM AdminUser u
 		// where TYPE(u) = AdminUser"),
 		@NamedQuery(name = "user.findByType", query = "SELECT u FROM User u where TYPE(u) = :type") })

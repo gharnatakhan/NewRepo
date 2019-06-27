@@ -15,7 +15,7 @@ public class Batch {
 	public enum allStreams {
 		JAVA, TESTING, DEVOPS, ITSM
 	}
-	
+
 	private String stream;
 
 	private String location;
