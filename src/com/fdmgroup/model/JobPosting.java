@@ -48,7 +48,7 @@ public class JobPosting {
 
 	private String jobTitle;
 
-	private String location;
+	private GeoFlex location;
 
 	private LocalDateTime applicationDeadline;
 
@@ -70,7 +70,7 @@ public class JobPosting {
 	}
 
 	public JobPosting(int numberOfPositions, int clientId, AccountManager accountManager, String jobTitle,
-			String location, LocalDateTime applicationDeadline, String jobDescription,
+			GeoFlex location, LocalDateTime applicationDeadline, String jobDescription,
 			List<Preference> wantedPreferences) {
 		super();
 		this.numberOfPositions = numberOfPositions;
@@ -84,7 +84,7 @@ public class JobPosting {
 	}
 
 	public JobPosting(int numberOfPositions, int clientId, AccountManager accountManager,
-			String jobTitle, String location, LocalDateTime applicationDeadline, String jobDescription,
+			String jobTitle, GeoFlex location, LocalDateTime applicationDeadline, String jobDescription,
 			List<Preference> wantedPreferences, List<Comment> comments, List<Application> applications) {
 		this.numberOfPositions = numberOfPositions;
 		this.clientId = clientId;
@@ -138,11 +138,11 @@ public class JobPosting {
 		this.jobTitle = jobTitle;
 	}
 
-	public String getLocation() {
+	public GeoFlex getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(GeoFlex location) {
 		this.location = location;
 	}
 

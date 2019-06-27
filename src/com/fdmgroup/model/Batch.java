@@ -12,9 +12,11 @@ public class Batch {
 	@Id
 	private int batchId;
 
-	private enum stream {
+	public enum allStreams {
 		JAVA, TESTING, DEVOPS, ITSM
 	}
+	
+	private String stream;
 
 	private String location;
 
@@ -28,8 +30,10 @@ public class Batch {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Batch(int batchId, String location, int batchSize, List<Trainee> trainee) {
+	public Batch(int batchId, String stream, String location, int batchSize, List<Trainee> trainee) {
+		super();
 		this.batchId = batchId;
+		this.stream = stream;
 		this.location = location;
 		this.batchSize = batchSize;
 		this.trainee = trainee;
@@ -41,6 +45,14 @@ public class Batch {
 
 	public void setBatchId(int batchId) {
 		this.batchId = batchId;
+	}
+
+	public String getStream() {
+		return stream;
+	}
+
+	public void setStream(String stream) {
+		this.stream = stream;
 	}
 
 	public String getLocation() {
@@ -69,8 +81,8 @@ public class Batch {
 
 	@Override
 	public String toString() {
-		return "Batch [batchId=" + batchId + ", location=" + location + ", batchSize=" + batchSize + ", trainee="
-				+ trainee + "]";
+		return "Batch [batchId=" + batchId + ", stream=" + stream + ", location=" + location + ", batchSize="
+				+ batchSize + ", trainee=" + trainee + "]";
 	}
 
 }
