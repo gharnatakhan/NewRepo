@@ -19,8 +19,8 @@ import com.fdmgroup.model.SalesAdministrator;
 import com.fdmgroup.model.SystemAdministrator;
 import com.fdmgroup.model.Trainee;
 
-public class TestingApp {
-
+public class CreateDummyUsers {
+	
 	public static void main(String[] args) {
 
 		UserDao userDao = new UserDao();
@@ -32,21 +32,17 @@ public class TestingApp {
 		GeoFlex gf = new GeoFlex();
 		LocalDate endDate = LocalDate.now();
 		LocalDate startDate = LocalDate.now();
-
-		Trainee trainee1 = new Trainee("d", "lastName", "email@gmail.com",  "photoPath", "pass",111);
-		Trainee trainee2 = new Trainee("d", "lastName", "email",  "photoPath", "password",111);
-		Trainee trainee3 = new Trainee("d", "lastName", "email",  "photoPath", "password",111);
-		Trainee trainee4 = new Trainee("d", "lastName", "email",  "photoPath", "password",111);
-
-	
-
+		Trainee trainee1 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
+		Trainee trainee2 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
+		Trainee trainee3 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
+		Trainee trainee4 = new Trainee("d", "lastName", "email", "Trainee", "photoPath", "password",111);
 		
-		AccountManager accountManager1 = new AccountManager( "firstName", "lastName", "email",  "photoPath", "password", 123);
-		AccountManager accountManager2 = new AccountManager( "firstName", "lastName", "email",  "photoPath", "password", 123);
-		AccountManager accountManager3 = new AccountManager( "firstName", "lastName", "email",  "photoPath", "password", 123);
+		AccountManager accountManager1 = new AccountManager( "firstName", "lastName", "email", "AccountManager", "photoPath", "password", 123);
+		AccountManager accountManager2 = new AccountManager( "firstName", "lastName", "email", "AccountManager", "photoPath", "password", 123);
+		AccountManager accountManager3 = new AccountManager( "firstName", "lastName", "email", "AccountManager", "photoPath", "password", 123);
 		
-		SalesAdministrator salesadmin = new SalesAdministrator("firstName", "lastName", "email",  "photoPath", "password", 123);
-		SystemAdministrator sysadmin = new SystemAdministrator("firstName", "lastName", "email",  "photoPath", "password", 123);
+		SalesAdministrator salesadmin = new SalesAdministrator("firstName", "lastName", "email", "SalesAdministrator", "photoPath", "password", 123);
+		SystemAdministrator sysadmin = new SystemAdministrator("firstName", "lastName", "email", "SystemAdministrator", "photoPath", "password", 123);
 		
 		
 		
@@ -71,7 +67,7 @@ public class TestingApp {
 		p2.setJobPostings(jobPostings);
 		p1.setTrainees(trainees);
 		p2.setTrainees(trainees);
-
+		
 		userDao.create(trainee1);
 		userDao.create(trainee2);
 		userDao.create(trainee3);
@@ -84,14 +80,9 @@ public class TestingApp {
 		
 		
 
-		
-
-//		clientDao.create(client1);
-		pdao.create(p1);
-		pdao.create(p2);
-//		jdao.create(jobPosting);
 		System.out.println("\nData stored");
 
 	}
+
 
 }

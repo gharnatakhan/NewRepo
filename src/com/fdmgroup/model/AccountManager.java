@@ -31,9 +31,9 @@ public class AccountManager extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AccountManager(String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager(String firstName, String lastName, String email,  String photoPath,
 			String password, int phoneNumber) {
-		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email,  photoPath, password, phoneNumber);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -42,9 +42,9 @@ public class AccountManager extends User {
 		this.clients = clients;
 	}
 
-	public AccountManager(String firstName, String lastName, String email, String role, String photoPath,
+	public AccountManager(String firstName, String lastName, String email,  String photoPath,
 			String password, int phoneNumber, List<JobPosting> jobPostings, List<Client> clients) {
-		super(firstName, lastName, email, role, photoPath, password, phoneNumber);
+		super(firstName, lastName, email, photoPath, password, phoneNumber);
 		this.jobPostings = jobPostings;
 		this.clients = clients;
 	}
@@ -69,7 +69,7 @@ public class AccountManager extends User {
 	public String toString() {
 		return "AccountManager [jobPostings=" + jobPostings + ", clients=" + clients + ", getUserId()=" + getUserId()
 				+ ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + ", getEmail()="
-				+ getEmail() + ", getRole()=" + getRole() + ", getPhotoPath()=" + getPhotoPath() + ", getPassword()="
+				+ getEmail()   + ", getPhotoPath()=" + getPhotoPath() + ", getPassword()="
 				+ getPassword() + ", getPhoneNumber()=" + getPhoneNumber() + ", toString()=" + super.toString()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
 	}

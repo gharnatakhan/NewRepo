@@ -37,7 +37,7 @@ public class User {
 
 	private String email;
 
-	private String role;
+	
 
 	private String photoPath;
 
@@ -52,13 +52,12 @@ public class User {
 
 	
 
-	public User(String firstName, String lastName, String email, String role, String photoPath,
+	public User(String firstName, String lastName, String email, String photoPath,
 			String password, int phoneNumber) {
 		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.role = role;
 		this.photoPath = photoPath;
 		this.password = password;
 		this.phoneNumber = phoneNumber;
@@ -96,13 +95,7 @@ public class User {
 		this.email = email;
 	}
 
-	public String getRole() {
-		return role;
-	}
 
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	public String getPhotoPath() {
 		return photoPath;
@@ -131,7 +124,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", role=" + role + ", photoPath=" + photoPath + ", password=" + password + ", phoneNumber="
+				+ ", photoPath=" + photoPath + ", password=" + password + ", phoneNumber="
 				+ phoneNumber + "]";
 	}
 
